@@ -28,7 +28,7 @@ function Home() {
     setRestaurant({
       data: {
         ...restaurant,
-        pizzas: [...restaurant.pizzas, newPizza],
+        pizzas: [{...restaurant.pizzas}, newPizza],
       },
       error: null,
       status: "resolved",
@@ -46,14 +46,14 @@ function Home() {
       </div>
       <div className="card">
         <h2>Pizza Menu</h2>
-        {restaurant.pizzas.map((pizza) => (
+        {restaurant.pizzas ? restaurant.pizzas.map((pizza) => (
           <div key={pizza.id}>
             <h3>{pizza.name}</h3>
             <p>
               <em>{pizza.ingredients}</em>
             </p>
           </div>
-        ))}
+        )) : null}
       </div>
       <div className="card">
         <h3>Add New Pizza</h3>
